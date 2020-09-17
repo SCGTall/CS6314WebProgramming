@@ -1,0 +1,86 @@
+.wholebody {
+  background-color: silver;
+}
+
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Set three columns to a same height */
+.row {
+	display: flex;
+}
+
+/* Set sidenav */
+.sidenav {
+  padding-top: 20px;
+}
+
+.sidenav a {
+	display: block;
+	text-decoration: none;
+	margin: 20px 0px;
+	padding: 20px 0px;
+	color: silver;
+}
+
+.leftnav {
+  background-color: green;
+}
+
+.leftnav a:hover {
+  color: white;
+  background-color: orange;
+}
+
+.rightnav {
+  background-color: orange;
+}
+
+.rightnav a:hover {
+  color: white;
+  background-color: green;
+}
+
+/* On small screens */
+@media screen and (max-width: 500px) {
+  .sidenav {
+    height: auto;
+    padding: 10px 0px;
+    display: block;
+  }
+  .row.content {
+    height: auto;
+  }
+  .row {
+    display: block;
+  }
+}
+
+/* Set footer */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+  height: 50px;
+}
+
+.left {
+	float: left;
+	text-align: left;
+}
+
+.right {
+	float: right;
+	text-align: right;
+}
+
+.textbox:after {
+    display: block; 
+    content: "clear"; 
+    clear: both; 
+    line-height: 0px;
+    visibility: hidden;
+}

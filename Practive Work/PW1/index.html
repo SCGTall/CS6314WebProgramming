@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Practice Work 1</title>
+    <style>
+    {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 30;
+      background-color: purple;
+    }
+    a { 
+      text-decoration: none;
+    }
+    /************  header  ************/
+    .header {
+      padding: 3px;
+      text-align: center;
+      background-color: grey;
+    }
+    .topleftnav {
+      overflow: hidden;
+      background-color: grey;
+    }
+    .topleftnav a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 13px 16px;
+      text-decoration: none;
+    }
+    .topleftnav a:hover {
+      background-color: black;
+      color: white;
+    }
+    /***********  mainbody  ***********/
+    .column {
+      float: left;
+      padding: 10px;
+      text-align: center;
+      color: white;
+    }
+    .column a{
+      text-decoration: none;
+      color: white;
+    }
+    .column.leftside {
+      width: 20%;
+    }
+    .column a {
+      float: middle;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 50px;
+      text-decoration: none;
+    }
+    .column a:hover {
+      text-decoration: underline;
+    }
+    .column.middle {
+      width: 60%;
+      background-color: orange;
+      text-align: justify;
+    }
+    .column.middle h2 {
+      display: block;
+    }
+    .column.rightside {
+      width: 20%;
+    }
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .images{
+      float: left;
+      padding: 10px 30px;
+    }
+    #container {
+      padding: 0px;
+      border: 2px solid #1f1f1f;
+    }
+    /************  footer  ************/
+    .footer {
+      padding: 1px;
+      text-align: center;
+      color: white;
+      background-color: grey;
+    }
+    </style>
+  </head>
+
+  <body>
+
+  <div class="w3-container" id="container">
+    <div class="header">
+      <div class="topleftnav">
+      <a href="">LOGO</a>
+      <a href="">Home</a>
+      <a href="">About</a>
+      <a href="">Projects</a>
+      <a href="">Contact</a>
+      <a href="" style="float: right">Login</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column leftside col-sm-2">
+      <article>
+        <a href="#london">LONDON</a>
+        <a href="#paris">PARIS</a> 
+        <a href="#tokyo">TOKYO</a> 
+      </article>
+    </div>
+    <div class="column middle col-sm-8">
+      <h1>Welcome</h1>
+      <p>
+        A city will gain its unique temperament from its history, geography, climate, etc. Some are open, some are quite, some are historical while some are energetic. You cannot find two exactly same cities, just like that you cannot find two exactly same people. Carefully learn the story of each city, and you will find that our world is so diverse and wonderful.<br/>
+      </p>  
+
+      <h2 class="london" id="london" class="w3-container"><br/>LONDON<br/></h2>
+      <img src="img/london.jpg" class="images">
+      <p>
+        London is the capital city of England. It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.<br/><br/>
+      </p>
+      <p>
+        Standing on the River Thames, London has been a major settlement for two millennia, its history going back to it’s founding by the Romans, who named it Londinium.<br/><br/>
+      </p>
+
+      <h2 class="paris" id="paris" class="w3-container"><br/>PARIS<br/></h2>
+      <img src="img/paris.jpg" class="images">
+      <p>
+        Paris is the capital and the most populous city of France. It has an area of 105 km² (41 mi²) and a population in 2013 of 2,229,621 within the city limits. Paris was founded in the 3rd century BC by a Celtic people called the Parisii, who gave the city its name. By the 12th century, Paris was the largest city in the western world, a prosperous trading center, and the home of the University of Paris, one of the oldest universities in history. At 17th century is the capital of Europe's major power. In the 18th century, it was the center stage of the French Revolution, and was an important center of finance, commerce, fashion, science, and the arts, a position it still retains today<br/><br/>
+      </p>        
+        
+      <h2 class="tokyo" id="tokyo" class="w3-container"><br/>TOKYO<br/></h2>
+      <img src="img/tokyo.jpg" class="images">
+      <p>
+        Tokyo, officially Tokyo is one of the 47 prefectures of Japan, and is both the capital and most populous city of Japan. The Greater Tokyo Area is the most populous metropolitan area in the world.<br/><br/>
+      </p>
+    </div>
+
+    <div class="column rightside col-sm-2">
+      <article>
+        <p>
+          <a href="http;//validator.w3.org/check/referer">
+            <img src="http://www.w3.org/Icons/valid-xhtml11" alt="Validate" />
+          </a>
+        </p>
+      </article>
+    </div>
+  </div>
+  <footer class="footer">
+    <p>
+      This website is only used for practice.
+    </p>
+  </footer>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>
