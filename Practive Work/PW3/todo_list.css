@@ -1,0 +1,84 @@
+.done{
+  text-decoration: line-through;
+}
+
+.mainbody {
+	margin: 10px;
+	padding: 15px;
+	background-color: #DCDCDC;
+}
+
+#titlebox {
+	padding: 10px 20px;
+	background-color: #1E90FF;
+}
+
+.left {
+	float: left;
+	text-align: left;
+}
+
+.right {
+	float: right;
+	text-align: right;
+}
+
+#titlebox:after {
+    display: block; 
+    content: "clear"; 
+    clear: both; 
+    line-height: 0px;
+    visibility: hidden;
+}
+
+#title {
+	color: #FFFFFF;
+	text-align: left;
+	float: left;
+}
+
+#plus {
+	color: #FFFFFF;
+	text-align: right;
+	float: right;
+}
+
+#addnew {
+	margin: 15px 0px;
+	padding: 5px 20px;
+	font-size: 18px;
+	width: 100%;
+	background-color: #DCDCDC;
+	border: 3px solid #DCDCDC;
+}
+
+#addnew:hover {
+	border-color: #000080;
+}
+
+#todolist {
+	padding: 0px;
+	list-style: none;
+	color: #000000;
+}
+
+#todolist li {
+	padding: 0px;
+	font-size: 18px;
+	height: 48px;
+	line-height: 48px;
+}
+
+#todolist li:nth-child(odd) {
+	background-color: #FFFFFF;
+}
+
+.ticon {
+	padding: 15px;
+	color: #FFFFFF;
+	background-color: #FF0000;
+}
+
+.complete {
+	text-decoration: line-through;
+}
