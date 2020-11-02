@@ -1,2 +1,0 @@
-I put my photo_gallery.js file in the js folder. So if there is any conflict, you can just put the js file in the root folder and change the path which is line 17 in HW2.html into:
-<script src="photo_gallery.js"></script>

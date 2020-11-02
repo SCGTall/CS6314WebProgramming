@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Top-Five Baby Names</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style type="text/css">
+		#table {
+			margin: 10px;
+			border: 3px solid black;
+			text-align: left;
+			padding: 1px;
+			width: 98%;
+		}
+
+		#table table, tr {
+			width: 100%;
+		}
+
+		#table th, td {
+			border: 1px solid black;
+			padding: 5px;
+			width: 20%;
+		}
+
+		#table tr:nth-child(odd) {
+	    	background-color: silver;
+	    	color: white;
+	    }
+
+	    #table tr:first-child {
+	    	background-color: black;
+	    	color: white;
+	    }
+
+	    #select {
+	    	margin: 10px;
+	    	padding: 10px;
+	    }
+
+	    .hidden {
+	    	visibility: hidden;
+	    }
+    </style>
+    <script>
+    	$(document).ready(function(){
+    		$("#submit").click(function(){
+    			$("#table").removeClass("hidden");
+    			$.ajax({
+    				type: "GET",
+					url: "babynames.php?year=" + $("#year").val() + "&gender=" + $("#gender").val(),
+					success: function(data){
+						$("#table").html(data);
+					},
+					error: function(){
+						alert("Error in AJAX.");
+					}
+    			});
+    		});
+    	});
+    </script>
+</head>
+<body>
+	<div id="select">
+		<h2>Top-Five Baby Names</h2>
+		<div>
+			<p>
+				<label>Year: </label>
+				<!-- Use php to dynamicly decided selected attribute. -->
+				<select id="year" name="year">
+					<option value='null'>All years</option>
+					<option value='2005'>2005</option>
+					<option value='2006'>2006</option>
+					<option value='2007'>2007</option>
+					<option value='2008'>2008</option>
+					<option value='2009'>2009</option>
+					<option value='2010'>2010</option>
+					<option value='2011'>2011</option>
+					<option value='2012'>2012</option>
+					<option value='2013'>2013</option>
+					<option value='2014'>2014</option>
+					<option value='2015'>2015</option>
+				</select>
+			</p>
+			<p>
+				<label>Gender: </label>
+				<select id="gender" name="gender">
+					<option value='null'>Both</option>
+					<option value='m'>Male</option>
+					<option value='f'>Female</option>
+				</select>
+			</p>
+			<input id="submit" type="submit" value="Submit">
+		</div>
+	</div>
+	<hr>
+	<div id="table" class="hidden"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
