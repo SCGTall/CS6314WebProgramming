@@ -1,0 +1,56 @@
+<%- include ('partials/header') %>
+
+<div class="jumbotron">
+	<div style="padding:2%;">
+		<h1 class="display-4">This is the list of most popular videos.</h1>
+		<p class="lead">You can add new video here.</p>
+		<a class="btn btn-primary btn-lg" href="/videos/new" role="button" style="width:150px;">Add</a>
+	</div>
+	<div style="padding:2%;">
+		<p class="lead">You can search videos here.</p>
+		<form action="/videos" method="GET">
+
+			<div class="form-group">
+				<input type="search" name="title" class="form-control" placeholder=<% if (lastTitle == undefined || lastTitle == "" || lastTitle == null) { %>
+					"Search movie title"
+				<% } else { %>
+					"<%= lastTitle %>"
+				<% } %>>
+			</div>
+			<div class="form-group">
+				<select name = "genre">
+		            <option value = "">All</option>
+					<% for (var i = 0; i < genres.length; i++) { %>
+						<% if (genres[i] == lastGenre) { %>
+							<option selected = "selected" value = <%= genres[i] %>><%= genres[i] %></option>
+						<% } else { %>
+							<option value = <%= genres[i] %>><%= genres[i] %></option>
+						<% } %>
+					<% }; %>
+					}
+				</select>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary btn-lg" style="width:150px;">Search</button>
+			</div>
+		</form> 
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<% videos.forEach(function(video){ %>
+			<div class="sm-col-3" style="margin:10px;">
+				<img src="images/<%= video.image %>" style="width:200px; height:200px; padding:5px;" class="img-thumbnail" alt="<%= video.title %>">
+				<div class="caption lead" style="padding:5px;">
+					<h6>[<%= video.genre %>]</h6>
+					<a href="videos/<%= video._id %>"><%= video.title %></a>
+				</div>
+			</div>
+		<% }); %>
+	</div>
+	<p><a href="/">Back to Home</a></p>
+</div>
+
+
+<%- include ('partials/footer') %>
