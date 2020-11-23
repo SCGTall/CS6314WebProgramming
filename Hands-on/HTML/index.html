@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Join a social network</title>
+
+<style>
+
+div{
+   margin-bottom: 10px;
+}
+
+label {
+   display: inline-block;
+   width: 100px;
+}
+</style>
+
+</head>
+
+
+<body>
+   <h1>Join a social network</h1>
+   <form>
+   		<div>
+         <label for="username">Username</label>
+         <input type="text" id="username" name="username" required placeholder="username">
+      </div>
+      <div>
+         <label for="pwd">Password</label>
+         <input type="password" id="pwd" name="pwd" required>
+      </div>
+      <div>
+         <label for="email">Email address</label>
+         <input type="email" id="email" name="email" >
+      </div>
+      <div>
+         <label for="phone">Phone number</label>
+         <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">(972-883-3575)
+      </div>
+      <div>
+         <label for="about">About you</label>
+         <textarea id="about" name="about" cols="30" rows="3"></textarea>
+      </div>
+
+      <div>
+         <label for="picture">Photo</label>
+         <input type="file" id="picture" name="picture">
+      </div>
+	  <div>
+         <label for="gender">Gender</label>
+         <select name="gender" id="gender">
+           <option value="m">Male</option>
+           <option value="f">Female</option>
+         </select>
+      </div>
+      <div>
+         <input type="checkbox" id="agree" name="agree" checked value="agreed"> I agree to the terms of service and privacy policy.<br>
+      </div>
+
+      <div>
+         <input type="submit" value="Submit">
+      </div>
+
+   </form>
+
+   
+</body>
+
+</html>

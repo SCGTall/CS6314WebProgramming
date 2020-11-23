@@ -1,0 +1,51 @@
+<html>
+<head><title>Tip Calculator</title>
+<script>
+
+window.onload = function(){
+
+	document.getElementById("ten").onclick = function(){
+		calculateTip(10);
+
+	}
+	document.getElementById("fifteen").onclick = function(){
+		calculateTip(15);
+
+	}
+	document.getElementById("eighteen").onclick = function(){
+		calculateTip(18);
+
+	}
+
+	// document.getElementById("ten").addEventListener("click", 
+	// function() { calculateTip(10) } );
+
+	// document.getElementById("fifteen").addEventListener("click", 
+	// function() { calculateTip(15) } );
+
+	// document.getElementById("eighteen").addEventListener("click", 
+	// function() { calculateTip(18) } );
+	
+	
+}
+
+
+function calculateTip(per){
+
+	document.getElementById("total").value = 
+	Math.round(document.getElementById("bill").value * (1+per/100));
+
+}
+</script>
+</head>
+
+<body>
+
+<input type="text" id="bill" placeholder="Bill">
+<button id="ten">10%</button> 
+<button id="fifteen">15%</button>
+<button id="eighteen">18%</button><br>
+<input type="text" id="total" placeholder="Total"><br>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head><title>TODO List </title> 
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+ <script>
+  $(document).ready(function(){
+
+    $("#add").click(function(){
+    	$("ul").append("<li>" + $("#new").val() + "</li>");
+    });
+
+    $("#new").keypress(function(event){
+     	if(event.which === 13){
+     		$("ul").append("<li>" + $("#new").val() + "</li>");
+     	}
+    	
+    });
+	// $("li").click(function(){
+ 	// 	$(this).toggleClass("done");
+ 	// });
+
+    $("ul").on("click", "li", function(){
+      $(this).toggleClass("done");
+
+    });
+
+
+ }); 
+
+ </script>
+
+<style>
+
+.done{
+  text-decoration: line-through;
+}
+
+</style>
+
+</head>
+
+<body>
+<div class="container">
+  <div class="row">
+    
+    <div class="col-sm bg-light">
+      
+    <h3>Todo List</h3>
+    <input type="text" id="new">
+    <button id="add">Add</button>
+    <hr />
+    <ul>
+      <li>Post Grades</li>
+      <li>TA meeting</li>
+    </ul>
+      
+
+    </div>
+    <div class="col-sm"></div>
+    <div class="col-sm"></div>
+  </div>
+</div>
+
+</body>
+</html>

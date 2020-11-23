@@ -1,0 +1,27 @@
+<%- include ('partials/header') %>
+
+<div class="container">
+<h1> Movie Details </h1>
+
+<p><img src="/images/<%= video.image %>"/></p>
+<p>Title: <%= video.title %></p>
+<p>Genre: <%= video.genre %></p>
+<p>Description: <%= video.description %></p>
+
+<div>
+	<form action="/videos/<%= video._id %>/edit" method="GET">
+	  <button type="submit" class="btn btn-warning" style="width:120px;">Edit video</button>
+	</form>
+</div>
+
+<div>
+	<form action="/videos/<%= video._id %>?_method=DELETE" method="POST">
+	  <button type="submit" class="btn btn-danger" style="width:120px;">Delete video</button>
+	</form>
+</div>
+
+<p><a href="/">Back to List</p>
+
+</div>
+
+<%- include ('partials/footer') %>
