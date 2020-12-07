@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Foot Products</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/template/favicon-32x32.png">
+
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/c7ddd3a2a5.js" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+
+  <!-- bootstrap-select -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+
+  <!-- Custom styles for this template -->
+  <link href="/stylesheets/style.css" type="text/css" rel="stylesheet">
+
+  <!-- Validate -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+    integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+    crossorigin="anonymous"></script>
+
+  <!-- Custome JS -->
+  <script src="/javascripts/index.js" crossorigin="anonymous"></script>
+  <script src="/javascripts/login.js"></script>
+  <script src="/javascripts/show.js"></script>
+  <script src="/javascripts/user.js"></script>
+
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <img class="mr-3" src="/images/template/logo.png" width="30" height="30" alt="logo" loading="lazy">
+      <a class="navbar-brand" href="/">Food Products</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" style="height: 40px;">
+
+            <!-- Button trigger modal -->
+
+            <!-- admin -->
+            <% if (user.category == "admin") { %>
+              <a id="sign-txt2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
+                <i class="fas fa-user ml-2 mr-2"></i>Admin</a>
+              <div class="btn-group">
+                <ul class="dropdown-menu dro-info" style="width: 200px;">
+                  <li id="dro-info-one">Account</li>
+                  <li style="margin-bottom: 6px;"><a href="/products/new">Add New Product</a></li>
+                  <li style="margin-bottom: 6px;"><a href="/users">Account Settings</a></li>
+                  <li style="margin-bottom: 6px;"><a href="#" onclick="document.getElementById('signout').submit();">Log
+                      Out</a></li>
+                </ul>
+                <form id="signout" action="/users/signout" method="POST"></form>
+              </div>
+
+            <!-- anonymous -->
+            <% } else if (user.category == "anonymous") { %>
+              <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-user ml-2 mr-2"></i>Sign In
+              </a>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/favorite"><i class="fas fa-heart ml-2 mr-2"></i>Favorite</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/shopcart"><i class="fas fa-shopping-cart ml-2 mr-2"></i>Shop Cart</a>
+
+              <!-- customer -->
+            <% } else if (user.category == "customer") { %>
+              <a id="sign-txt2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
+                <i class="fas fa-user ml-2 mr-2"></i>My Account</a>
+              <div class="btn-group">
+                <ul class="dropdown-menu dro-info" style="width: 200px;">
+                  <li id="dro-info-one">Account</li>
+                  <li style="margin-bottom: 6px;"><a href="/orders">Orders</a></li>
+                  <li style="margin-bottom: 6px;"><a href="/users">Account Settings</a></li>
+                  <li style="margin-bottom: 6px;"><a href="#" onclick="document.getElementById('signout').submit();">Log
+                      Out</a></li>
+                </ul>
+                <form id="signout" action="/users/signout" method="POST"></form>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/favorite"><i class="fas fa-heart ml-2 mr-2"></i>Favorite</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shopcart"><i class="fas fa-shopping-cart ml-2 mr-2"></i>Shop Cart</a>
+            
+            <% } %>
+
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header Image -->
+  <img src="/images/template/header.jpg" class="img-fluid mx-0 w-100 d-block" alt="Responsive image">

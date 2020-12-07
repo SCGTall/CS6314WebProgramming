@@ -1,0 +1,22 @@
+<!-- Category & Search Bar -->
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <form action="/products" method="GET">
+      <select id="select-category" name="searchCategories" class="selectpicker border-right-0" multiple title="&nbsp;&nbsp;&nbsp;All Categories">
+        <% categories.forEach(function(category){ %>
+          <option><%= category.categoryName %></option>
+        <% }); %>
+      </select>
+      </div>
+      <input id="search" name="searchText" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder=
+      <% if (lastFilterString === undefined || lastFilterString === "") { %>
+        "Search the name of your ideal product here."
+      <% } else { %>
+        "<%= lastFilterString %>"
+      <% } %>>
+      <div class="input-group-append">
+      <button type="submit" class="btn btn-secondary"
+        id="button-addon2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="row userinfo">
+    <div class="col-md-9 offset-md-1">
+        <h2 class="text-warning my-4">
+            Add New Product
+        </h2>
+        <div>
+            <form action="/products/new/add" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input class="form-control" name="productName" aria-describedby="emailHelp">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input class="form-control" name="description">
+                </div>
+
+                <div class="form-group">
+                    <label for="productPrice">Product Price</label>
+                    <input class="form-control" name="productPrice">
+                </div>
+
+                <div class="form-group">
+                    <label for="storeNum">Store Number</label>
+                    <input class="form-control" name="storeNum">
+                </div>
+
+                <div class="form-group">
+                    <label for="categories">Categories</label>
+                    <input class="form-control" name="categories">
+                    <small id="emailHelp" class="form-text text-muted">Please seperate by comma, eg. category1,
+                        category2 ...</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <div class="mb-3">
+                        <img id="previewImage" src="http://placehold.it/480x288" alt="image review">
+                    </div>
+                    
+                    <input id="file" onchange="changepic(this)"  type="file" accept=".jpg, .jpeg, .png, .gif, .bmp" class="form-control-file" name="image">
+                </div>
+
+                <button type="submit" class="btn btn-warning px-5 my-5">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /.row -->

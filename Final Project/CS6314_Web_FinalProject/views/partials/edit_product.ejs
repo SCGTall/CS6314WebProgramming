@@ -1,0 +1,86 @@
+<div class="row userinfo">
+    <div class="col-md-9 offset-md-1">
+        <h2 class="text-warning my-4">
+            Edit Product
+        </h2>
+        <div>
+            <!-- Update Product form -->
+            <form action="/products/<%= product.productID %>/edit/update" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input class="form-control" name="productName" id="productName" aria-describedby="emailHelp" value="<%= product.productName %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input class="form-control" name="description" id="description" value="<%= product.description %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="productPrice">Product Price</label>
+                    <input class="form-control" name="productPrice" id="productPrice" value="<%= product.productPrice %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="storeNum">Store Number</label>
+                    <input class="form-control" name="storeNum" id="storeNum" value="<%= product.storeNum %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="categories">Categories</label>
+                    <input class="form-control" name="categories" id="categories" value="<%= product.categories %>">
+                    <small id="emailHelp" class="form-text text-muted">Please seperate by comma, eg. category1,
+                        category2 ...</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Image</label>    
+
+                    <div class="mb-3">
+                        <img id="previewImage" src="/images/<%= product.image %>">
+                    </div>
+                    
+                    <input id="file" onchange="changepic(this)" type="file" accept=".jpg, .jpeg, .png" class="form-control-file" name="image">
+                </div>
+
+                <!-- Update Product button -->
+                <button type="submit" class="btn btn-warning px-5 my-5">Save</button>
+
+                <!-- deletion alert button-->
+                <button type="button" class="btn btn-danger px-5 my-5 float-right" data-toggle="modal"
+                    data-target="#deleteModal">delete</button>
+            </form>
+            <!-- deletion alert modal -->
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Deletion Alert</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure to delete this product?
+                        </div>
+                        <div class="modal-footer">
+
+                            <!-- delete product form -->
+                            <form id="deleteProduct" action="/products/<%= product.productID %>/edit/remove"
+                                method="POST">
+                            </form>
+                            <!-- delete button -->
+                            <button type="button" onclick="document.getElementById('deleteProduct').submit();"
+                                class="btn btn-danger">Delete</button>
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /.row -->

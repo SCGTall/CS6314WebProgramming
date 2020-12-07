@@ -1,0 +1,66 @@
+<!-- breadcrumb -->
+
+<nav class="w-100 mt-3 mr-3" aria-label="breadcrumb">
+  <ol class="breadcrumb bg-light">
+    <li class="breadcrumb-item"><a href="/" class="text-dark">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Order History</li>
+  </ol>
+</nav>
+
+
+<!-- Page Features -->
+<div class="row userinfo">
+  <div class="col-md-9 offset-md-1">
+    <p class="content-title">
+      Order History
+    </p>
+    <div>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Order Date</th>
+            <th scope="col">Order Number</th>
+            <th scope="col">Order Total</th>
+ 
+          </tr>
+        </thead>
+        <tbody id="ordersInfo">
+          <!-- Order One -->
+          <% Object.keys(orders).forEach(function(orderID){ %>
+            <% let order = orders[orderID]; %> 
+          <tr>
+            <td><%= order.purchaseDate %></td>
+            <td><%= order.orderID %></td>
+            <td><%= order.totalPrice %></td>
+          </tr>
+          <tr id="item-show-<%= orderID %> " class="item-show">
+            <td colspan="4">
+              <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-5" style="margin-bottom: 6px;">
+
+                  <% Object.keys(order["products"]).forEach(function(productID){ %>
+                    <% let product = order["products"][productID]; %>
+
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <img src="/images/<%= product.image %>" class="w-100">
+                    </div>
+                    <div class="col-sm-6">
+                      <h6><%= product.productName %></h6>
+                      <p>QTY: <%= product.purchaseNum %></p>
+                      <p>PRICE: $<%= product.productPrice %></p>
+                    </div>
+                  </div>
+                <% }) %> 
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% }) %> 
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- /.row -->

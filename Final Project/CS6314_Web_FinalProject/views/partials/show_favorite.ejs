@@ -1,0 +1,90 @@
+<!-- breadcrumb -->
+
+<nav class="w-100 mt-3 mr-3" aria-label="breadcrumb">
+  <ol class="breadcrumb bg-light">
+    <li class="breadcrumb-item"><a href="/" class="text-dark">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Favorite</li>
+  </ol>
+</nav>
+
+
+<!-- Product list -->
+<div id="productList" class="row text-center">
+
+  <% Object.keys(favorite).forEach(function(productID){ %>
+  <div class="col-lg-3 col-md-6 mb-4" style="display: none;">
+    <!-- card -->
+    <div class="card h-100 pb-0">
+
+      <!-- product image -->
+      <a href="products/<%= productID %>" class="card-link text-dark">
+        <img class="card-img-top" src="images/<%= favorite[productID].image %>"
+          alt="<%= favorite[productID].productName %>">
+      </a>
+
+      <div class="card-body text-left">
+
+        <!-- product link -->
+        <a href="products/<%= favorite[productID].productID %>" class="card-link text-dark">
+
+          <!-- product name -->
+          <h5 class="card-title text-truncate"><%= favorite[productID].productName %></h5>
+
+          <!-- description -->
+          <p class="card-text truncate"><%= favorite[productID].description %></p>
+
+          <!-- price -->
+          <p class="card-text text-right font-weight-bold float-right mb-0"> $<%= favorite[productID].productPrice %>
+          </p>
+        </a>
+
+        <!-- delete button -->
+        <form id="favoriteRemove<%= productID %>" action="/favorite/remove" method="POST">
+          <input type="hidden" name="productID" value="<%= productID %>">
+        </form>
+        <a class="btn p-0" onclick="document.getElementById('favoriteRemove<%= productID %>').submit();">
+          <p class="float-left mb-0"><i class="fas fa-trash-alt text-secondary"></i></p>
+        </a>
+      </div>
+
+      <div class="card-footer">
+
+        <!-- shop button -->
+        <form action="/shopcart/add" method="POST">
+          <input type="hidden" name="productID" value="<%= productID %>">
+          <input type="hidden" name="num" value="1">
+          <button type="submit" class="btn btn-warning px-4"><i class="fas fa-shopping-cart mr-2"></i>Add</button>
+        </form>
+        
+      </div>
+
+    </div>
+  </div>
+  <% }); %>
+
+</div>
+<!-- /.row -->
+
+<!-- Pagination -->
+<nav aria-label="Page navigation example text-secondary">
+  <ul id="page" class="pagination justify-content-center w-100">
+    <li id="pagePrev" class="page-item ml-0 mr-auto disabled">
+      <a class="page-link" aria-label="Previous">
+        <span aria-hidden="true">
+          <i class="fas fa-chevron-left mr-3"></i>
+          Prev
+        </span>
+      </a>
+    </li>
+    <li id="page1" class="page page-item active"><a class="page-link">1</a></li>
+
+    <li id="pageNext" class="page-item ml-auto mr-0">
+      <a class="page-link" aria-label="Next">
+        <span aria-hidden="true">
+          Next
+          <i class="fas fa-chevron-right ml-3"></i>
+        </span>
+      </a>
+    </li>
+  </ul>
+</nav>

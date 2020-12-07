@@ -1,0 +1,135 @@
+<!-- breadcrumb -->
+<div class="row">
+    <nav class="w-100 mt-3 mr-3" aria-label="breadcrumb">
+        <ol class="breadcrumb bg-light">
+            <li class="breadcrumb-item"><a href="/" class="text-dark">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Shop Cart</li>
+        </ol>
+    </nav>
+</div>
+<!-- Shop list -->
+<div id="shopList" class="row text-center">
+    <div class="col col-lg-8 col-md-6">
+        <% Object.keys(cart).forEach(function(productID){ %>
+        <div class="row mr-0 w-100 mb-3">
+            <div class="col-12 col-lg-6 col-sm-12 bg-light">
+                <div class="rounded py-3 h-100">
+                    <img class="w-100 h-100" src="/images/<%= cart[productID].image %>"
+                        alt="<%= cart[productID].productName %> Picture">
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-sm-12 bg-light">
+                <div class="p-5">
+                    <h4 class="text-left"><%= cart[productID].productName %>
+                        <!-- delete item -->
+                        <form id="deleteItem<%= productID %>" action="/shopcart/remove" method="POST">
+                            <input type="hidden" value="<%= productID %>" name="productID">
+                        </form>
+                        <a class="btn float-right"
+                            onclick="document.getElementById('deleteItem<%= productID %>').submit();">
+                            <i class="fas fa-trash-alt text-secondary"></i>
+                        </a>
+                    </h4>
+                    <p class="text-left"><%= cart[productID].description %></p>
+                    <% cart[productID].categories.forEach(function(category){ %>
+                    <a href="#" class="badge badge-secondary float-right mr-1 mb-1"><%= category.categoryName %></a>
+                    <% }); %>
+                    <br>
+                    
+                        <div class="float-right mt-1 mb-4">
+                            <h4 class="">$<%= cart[productID].productPrice %></h4>
+                        </div>
+                    
+                        <div class="btn-group float-left mb-4" role="group" aria-label="Basic example">
+                            <form action="/shopcart/update" method="POST">
+                                <input hidden name="productID" value="<%= productID %>">
+                                <input hidden name="num" value="-1">
+                                <button type="submit" class="btn btn-light"><i class="fas fa-minus text-secondary"></i></button>
+                            </form>
+                            
+                            <button disabled type="button" class="btn btn-light"><h5><%= cart[productID].cartNum %></h5></button>
+
+                            <form action="/shopcart/update" method="POST">
+                                <input hidden name="productID" value="<%= productID %>">
+                                <input hidden name="num" value="1">
+                                <button type="submit" class="btn btn-light"><i class="fas fa-plus text-secondary"></i></button>
+                            </form>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="col col-lg-4 col-md-6 mb-3">
+        <div class="bg-light p-5" style="border-left: 1px; border-right: 1px;">
+            <h4 class="mb-4">Order Summary</h4>
+            <hr>
+            <!-- Subtotal -->
+            <div class="row">
+                <div class="col-6">
+                    <h6 class="text-left">Subtotal</h6 class="text-left">
+                </div>
+                <div class="col-6">
+                    <p class="text-right"><%= summary.beforeTax %></p>
+                </div>
+            </div>
+
+            <!-- Shipping -->
+            <div class="row">
+                <div class="col-6">
+                    <h6 class="text-left">Shipping</h6 class="text-left">
+                </div>
+                <div class="col-6">
+                    <p class="text-right"><%= summary.shipping %></p>
+                </div>
+            </div>
+
+            <!-- Discount -->
+            <div class="row">
+                <div class="col-6">
+                    <h6 class="text-left">Discount</h6 class="text-left">
+                </div>
+                <div class="col-6">
+                    <p class="text-right"><%= summary.discount %></p>
+                </div>
+            </div>
+
+            <!-- Discount String -->
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-right"><%= summary.discountStr %></p>
+                </div>
+            </div>
+
+            <!-- Tax -->
+            <div class="row">
+                <div class="col-6">
+                    <h6 class="text-left">Tax</h6 class="text-left">
+                </div>
+                <div class="col-6">
+                    <p class="text-right"><%= summary.tax %></p>
+                </div>
+            </div>
+            <hr>
+
+            <!-- Total -->
+            <div class="row">
+                <div class="col-6">
+                    <h5 class="text-left">Total</h5>
+                </div>
+                <div class="col-6">
+                    <h5 class="text-right"><%= summary.total %></h5>
+                </div>
+            </div>
+
+            <a href="/shopcart/checkout" class="btn btn-secondary my-4 mt-5 w-100 large">
+                <h5 class="my-1">Check Out</h5>
+            </a>
+            <!-- /.col summary -->
+        </div>
+    </div>
+</div>
+<!-- /.row -->

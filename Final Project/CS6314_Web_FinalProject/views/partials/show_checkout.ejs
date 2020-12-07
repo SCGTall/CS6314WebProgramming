@@ -1,0 +1,161 @@
+<!-- breadcrumb -->
+<div class="row">
+    <nav class="w-100 mt-3 mr-3" aria-label="breadcrumb">
+        <ol class="breadcrumb bg-light">
+            <li class="breadcrumb-item"><a href="/" class="text-dark">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+        </ol>
+    </nav>
+</div>
+
+<!-- checkout content -->
+<div class="row userinfo">
+
+    <div class="col col-lg-8 col-md-6 pr-4">
+        <p class="content-title">
+            Peyment Info
+        </p>
+        <form class="tab-form" action="/shopcart/checkout/pay" method="POST">
+
+            <div class="form-group">
+                <label>Card Number</label>
+                <div>
+                    <input onkeyup="formatBankNo(this)" type="text" class="form-control" name="cardNumber"
+                        id="cardNumber" placeholder="Card Number" value="<%= user.details.card %>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Expiration Date</label>
+                        <div>
+                            <input onkeyup="formatDate(this)" type="text" class="form-control" name="expirationDate"
+                                id="expirationDate" placeholder="MM/YY" value="<%= user.details.expDate %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Security Code</label>
+                        <div>
+                            <input type="number" class="form-control" name="securityCode" id="securityCode"
+                                placeholder="XXX" value="<%= user.details.secCode %>"
+                                oninput="if(value.length>4)value=value.slice(0,4)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="content-title">
+                Shipping Info
+            </p>
+
+            <div class="form-group">
+                <label>Street Address</label>
+                <input id="streetAddress" class="form-control" name="streetAddress" placeholder="Street Address"
+                    value="<%= user.details.street %>">
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="infoCity">City</label>
+                        <input type="text" class="form-control" name="infoCity" id="infoCity1" placeholder="City"
+                            value="<%= user.details.city %>">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="infoZip">Zip</label>
+                        <input type="text" class="form-control" name="infoZip" id="infoZip1" placeholder="Zip"
+                            value="<%= user.details.zip %>" maxlength="5">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>State</label>
+                <select class="form-control" name="infoState">
+
+                    <% var options = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ]; %>
+                    <% var names = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming'] %>
+                    <% for ( var i = 0; i < options.length; i++ ) { %>
+                    <% var selected = ( options[i] == user.details.state ) ? "selected" : ""; %>
+                    <option value="<%= options[i] %>" <%= selected %>><%= names[i] %></option>
+                    <% } %>
+
+                </select>
+            </div>
+
+            <button type="submit" onclick="issuePayment()" class="btn btn-warning btn-block login-btn">Purchase</button>
+        </form>
+    </div>
+    <div class="col col-lg-4 col-md-6 mb-3">
+        <div class="bg-light p-5" style="border-left: 1px; border-right: 1px;">
+            <h4 class="mb-4">Order Summary</h4>
+            <hr>
+            <!-- Subtotal -->
+            <div class="row">
+                <div class="col-6">
+                    <h6 class="text-left">Subtotal</h6 class="text-left">
+                </div>
+                <div class="col-6">
+                    <p class="text-right"><%= summary.beforeTax %></p>
+                </div>
+            </div>
+
+            <!-- Shipping -->
+            <div class="row">
+                <div class="col-6">
+                    <h6 class="text-left">Shipping</h6 class="text-left">
+                </div>
+                <div class="col-6">
+                    <p class="text-right"><%= summary.shipping %></p>
+                </div>
+            </div>
+
+            <!-- Discount -->
+            <div class="row">
+                <div class="col-6">
+                    <h6 class="text-left">Discount</h6 class="text-left">
+                </div>
+                <div class="col-6">
+                    <p class="text-right"><%= summary.discount %></p>
+                </div>
+            </div>
+
+            <!-- Discount String -->
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-right"><%= summary.discountStr %></p>
+                </div>
+            </div>
+
+            <!-- Tax -->
+            <div class="row">
+                <div class="col-6">
+                    <h6 class="text-left">Tax</h6 class="text-left">
+                </div>
+                <div class="col-6">
+                    <p class="text-right"><%= summary.tax %></p>
+                </div>
+            </div>
+            <hr>
+
+            <!-- Total -->
+            <div class="row">
+                <div class="col-6">
+                    <h5 class="text-left">Total</h5>
+                </div>
+                <div class="col-6">
+                    <h5 class="text-right"><%= summary.total %></h5>
+                </div>
+            </div>
+
+            <!-- /.col summary -->
+        </div>
+    </div>
+
+
+</div>
+<!-- /.row -->

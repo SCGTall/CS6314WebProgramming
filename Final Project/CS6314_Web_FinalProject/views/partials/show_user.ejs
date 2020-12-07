@@ -1,0 +1,258 @@
+<!-- breadcrumb -->
+
+<nav class="w-100 mt-3 mr-3" aria-label="breadcrumb">
+  <ol class="breadcrumb bg-light">
+    <li class="breadcrumb-item"><a href="/" class="text-dark">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Account Settings</li>
+  </ol>
+</nav>
+
+
+
+<!-- admin -->
+<% if (user.category == "admin") { %>
+
+<div class="row userinfo">
+
+  <div class="col-md-8 offset-md-2">
+
+    <div id="mds" style="margin-top: -62px;position: absolute;"></div>
+    <p class="content-title">
+      Account Details
+    </p>
+    <div>
+
+
+      <form class="tab-form" id="informationForm" action="/users/update/account" method="POST">
+        <div class="form-group">
+          <label>Email</label>
+          <div>
+            <input type="email" disabled class="form-control" name="email" id="email" placeholder="<%= user.email %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div style="position: relative;">
+            <div class="d-flex bd-highlight">
+              <div class=" w-100 bd-highlight pr-2">
+                <input disabled id="infoPwd" class="form-control" name="infoPwd" type="password" value=""
+                  placeholder="Password">
+              </div>
+              <div class=" flex-shrink-1 bd-highlight">
+                <button id="pwd-edit" type="button" class="btn btn-secondary float-right">Edit
+                </button>
+                <button id="pwd-save" style="display: none;" type="button" class="btn btn-secondary float-right">Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>First Name</label>
+          <div>
+            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name"
+              value="<%= user.details.firstName %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <div>
+            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name"
+              value="<%= user.details.lastName %>">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Date Of Birth</label>
+          <div>
+            <input type="text" id="dateOfBirth" class="form-control" name="dateOfBirth" placeholder="MM/DD/YY"
+              value="<%= user.details.dateOfBirth %>">
+          </div>
+        </div>
+        <br>
+        <button id="x1" type="submit" class="btn btn-warning btn-block login-btn">Save</button>
+      </form>
+
+    </div>
+  </div>
+  <% } else { %>
+
+  <!-- other users  -->
+
+  <div class="row userinfo">
+    <div class="col-md-3">
+      <div class=" navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link active nav-link-c" href="#mds" onclick="tabCk('informationForm', this)">
+              <i class="fas fa-user ml-2 mr-2"></i>Account Details
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-c" href="#mds" onclick="tabCk('cardForm', this)">
+              <i class="fas fa-credit-card ml-2 mr-2"></i>Payment Methods
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-c" href="#mds" onclick="tabCk('deliveryForm', this)">
+              <i class="fas fa-truck ml-2 mr-2"></i>Delivery Addresses
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+      <div id="mds" style="margin-top: -62px;position: absolute;"></div>
+      <p class="content-title">
+        Account Details
+      </p>
+      <div>
+        <!-- Account Details -->
+        <form class="tab-form" id="informationForm">
+          <div class="form-group">
+            <label>Email</label>
+            <div>
+              <input type="email" disabled class="form-control" name="email" id="email" placeholder="Email" value="<%= user.email %>">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Username</label>
+            <div style="position: relative;">
+              <div class="d-flex bd-highlight">
+                <div class=" w-100 bd-highlight pr-2">
+                  <input disabled id="infoUsn" class="form-control" name="infoUsn" type="text" value="<%= user.username %>"
+                    placeholder="Username">
+                </div>
+                <div class=" flex-shrink-1 bd-highlight">
+                  <button id="usn-edit" type="button" class="btn btn-secondary float-right">Edit
+                  </button>
+                  <button id="usn-save" style="display: none;" type="button" class="btn btn-secondary float-right">Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <div style="position: relative;">
+              <div class="d-flex bd-highlight">
+                <div class=" w-100 bd-highlight pr-2">
+                  <input disabled id="infoPwd" class="form-control" name="infoPwd" type="password" value=""
+                    placeholder="Password">
+                </div>
+                <div class=" flex-shrink-1 bd-highlight">
+                  <button id="pwd-edit" type="button" class="btn btn-secondary float-right">Edit
+                  </button>
+                  <button id="pwd-save" style="display: none;" type="button" class="btn btn-secondary float-right">Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <label class="addr-other-x">Details</label>
+          <div class="form-group">
+            <label>First Name</label>
+            <div>
+              <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name"
+                value="<%= user.details.firstName %>">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <div>
+              <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name"
+                value="<%= user.details.lastName %>">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <div>
+              <input onkeyup="phone(this)" maxlength="12" type="text" class="form-control" name="phoneNumber"
+                id="phoneNumber" placeholder="Phone Number" value="<%= user.details.phone%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dateOfBirth">Date Of Birth</label>
+            <div>
+              <input type="text" id="dateOfBirth" class="form-control" name="dateOfBirth" placeholder="MM/DD/YY"
+                value="<%= user.details.dateOfBirth %>">
+            </div>
+          </div>
+          <button id="x1" type="submit" onclick="saveUserInfo()" class="btn btn-warning btn-block login-btn">Save</button>
+        </form>
+        <!-- Payment Methods -->
+        <form class="tab-form" style="display: none;" id="cardForm">
+          <div class="form-group">
+            <label>Card Number</label>
+            <div>
+              <input onkeyup="formatBankNo(this)" type="text" class="form-control" name="cardNumber" id="cardNumber"
+                placeholder="Card Number" value="<%= user.details.card %>">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Expiration Date</label>
+            <div>
+              <input onkeyup="formatDate(this)" type="text" class="form-control" name="expirationDate"
+                id="expirationDate" placeholder="MM/YY" value="<%= user.details.expDate %>">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Security Code</label>
+            <div>
+              <input type="number" class="form-control" name="securityCode" id="securityCode" placeholder="XXX"
+                value="<%= user.details.secCode %>" oninput="if(value.length>4)value=value.slice(0,4)" />
+            </div>
+          </div>
+
+          <button type="submit" onclick="saveCardInfo()" class="btn btn-warning btn-block login-btn">Save</button>
+        </form>
+        <!-- Delivery Addresses -->
+        <form class="tab-form" style="display: none;" id="deliveryForm">
+
+          <div class="form-group">
+            <label>Street Address</label>
+            <input id="streetAddress" class="form-control" name="streetAddress" placeholder="Street Address"
+              value="<%= user.details.street %>">
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="infoCity">City</label>
+                <input type="text" class="form-control" name="infoCity" id="infoCity1" placeholder="City"
+                  value="<%= user.details.city %>">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="infoZip">Zip</label>
+                <input type="text" class="form-control" name="infoZip" id="infoZip1" placeholder="Zip"
+                  value="<%= user.details.zip %>" maxlength="5">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>State</label>
+            <select id="infoState" class="form-control" name="infoState">
+
+              <% var options = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ]; %>
+              <% var names = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
+              %> 
+              <% for ( var i = 0; i < options.length; i++ ) { %>
+                  <% var selected = ( options[i] == user.details.state ) ? "selected" : ""; %>
+                  <option value="<%= options[i] %>" <%= selected %>><%= names[i] %></option>
+              <% } %>
+
+              </select>
+          </div>
+
+          <button type="submit" onclick="saveDeliveryInfo()" class="btn btn-warning btn-block login-btn">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+  <% } %>
